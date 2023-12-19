@@ -18,10 +18,11 @@ class _NotificationScreenState extends State<NotificationScreen> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           DataSnapshot? data = snapshot.data;
-          if (data!.value != null) {
-            Object? hrValue =
-                snapshot.data!.child('Images').child('image').value;
-            print(hrValue);
+          print(data!.value);
+          print("----------------------------------------");
+          if (data.value != null) {
+            Object? image = snapshot.data!.child('image').child('url').value;
+            print(image);
 
             return Scaffold(
               backgroundColor: Colors.green.shade300,
@@ -64,7 +65,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     child: SizedBox(
                       height: MediaQuery.of(context).size.width * 0.9,
                       width: MediaQuery.of(context).size.width * 0.7,
-                      //child: Image.network(hrValue!),
+                      child: Image.network(image.toString()),
                     ),
                   ),
                 ],
