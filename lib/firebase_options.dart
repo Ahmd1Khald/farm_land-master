@@ -49,6 +49,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '954938723219',
     projectId: 'farm-land-ba606',
     authDomain: 'farm-land-ba606.firebaseapp.com',
+    databaseURL: 'https://farm-land-ba606-default-rtdb.firebaseio.com',
     storageBucket: 'farm-land-ba606.appspot.com',
     measurementId: 'G-LWJT6J05WJ',
   );
@@ -58,6 +59,7 @@ class DefaultFirebaseOptions {
     appId: '1:954938723219:android:d4a6fdd29fb14d8b2af666',
     messagingSenderId: '954938723219',
     projectId: 'farm-land-ba606',
+    databaseURL: 'https://farm-land-ba606-default-rtdb.firebaseio.com',
     storageBucket: 'farm-land-ba606.appspot.com',
   );
 
@@ -66,6 +68,7 @@ class DefaultFirebaseOptions {
     appId: '1:954938723219:ios:5412514a777dedf72af666',
     messagingSenderId: '954938723219',
     projectId: 'farm-land-ba606',
+    databaseURL: 'https://farm-land-ba606-default-rtdb.firebaseio.com',
     storageBucket: 'farm-land-ba606.appspot.com',
     iosBundleId: 'com.example.farmLand',
   );
@@ -75,6 +78,7 @@ class DefaultFirebaseOptions {
     appId: '1:954938723219:ios:45cdaf7848e837c32af666',
     messagingSenderId: '954938723219',
     projectId: 'farm-land-ba606',
+    databaseURL: 'https://farm-land-ba606-default-rtdb.firebaseio.com',
     storageBucket: 'farm-land-ba606.appspot.com',
     iosBundleId: 'com.example.farmLand.RunnerTests',
   );
