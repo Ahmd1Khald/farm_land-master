@@ -64,11 +64,13 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  ///Todo for loop to show all images
                   Center(
                     child: SizedBox(
-                      height: MediaQuery.of(context).size.width * 0.9,
-                      width: MediaQuery.of(context).size.width * 0.7,
-                      child: Image.network(image.toString()),
+                      height: 300,
+                      width: 300,
+                      child:
+                          Image.network(image.toString(), fit: BoxFit.contain),
                     ),
                   ),
                 ],
