@@ -18,10 +18,13 @@ class _NotificationScreenState extends State<NotificationScreen> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           DataSnapshot? data = snapshot.data;
-          print(data!.value);
+          //print(data!.value);
           print("----------------------------------------");
-          if (data.value != null) {
-            Object? image = snapshot.data!.child('image').child('url').value;
+          if (data?.value != null) {
+            Object? image = snapshot.data!
+                .child('-Nm2e1dBRFgtsJJdOtVq')
+                .child('photo_url')
+                .value;
             print(image);
 
             return Scaffold(
