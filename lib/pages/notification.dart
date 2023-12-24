@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,7 @@ class NotificationScreen extends StatefulWidget {
 }
 
 class _NotificationScreenState extends State<NotificationScreen> {
+  List<String> imagesLink = [];
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<DataSnapshot>(
@@ -18,14 +20,24 @@ class _NotificationScreenState extends State<NotificationScreen> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           DataSnapshot? data = snapshot.data;
-          //print(data!.value);
           print("----------------------------------------");
           if (data?.value != null) {
-            Object? image = snapshot.data!
-                .child('-Nm2e1dBRFgtsJJdOtVq')
-                .child('photo_url')
-                .value;
-            print(image);
+            //print(snapshot.data!.children.length);
+            for (int i = 0; i < snapshot.data!.children.length; i++) {
+              var photoUrl = snapshot.data!.children.toList()[i].key;
+              //print(snapshot.data!.children.toList()[i].key);
+              String img = snapshot.data!
+                  .child("$photoUrl")
+                  .child('photo_url')
+                  .value
+                  .toString();
+
+              print(img);
+              imagesLink.add(img);
+            }
+
+            Set<String> uniqueImages = Set.from(imagesLink);
+            print(uniqueImages);
 
             return Scaffold(
               backgroundColor: Colors.green.shade300,
@@ -64,13 +76,22 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  ///Todo for loop to show all images
-                  Center(
-                    child: SizedBox(
-                      height: 300,
-                      width: 300,
-                      child:
-                          Image.network(image.toString(), fit: BoxFit.contain),
+                  Expanded(
+                    child: ListView.separated(
+                      itemBuilder: (context, index) => Center(
+                        child: SizedBox(
+                            height: 200,
+                            width: 200,
+                            child: CachedNetworkImage(
+                              imageUrl: uniqueImages.toList()[index],
+                              placeholder: (context, url) =>
+                                  const CircularProgressIndicator(),
+                            )),
+                      ),
+                      separatorBuilder: (context, index) => const SizedBox(
+                        height: 0,
+                      ),
+                      itemCount: uniqueImages.length,
                     ),
                   ),
                 ],
