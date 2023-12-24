@@ -77,7 +77,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
-                    child: ListView.separated(
+                    child: ListView.builder(
                       itemBuilder: (context, index) => Center(
                         child: SizedBox(
                             height: 200,
@@ -87,9 +87,6 @@ class _NotificationScreenState extends State<NotificationScreen> {
                               placeholder: (context, url) =>
                                   const CircularProgressIndicator(),
                             )),
-                      ),
-                      separatorBuilder: (context, index) => const SizedBox(
-                        height: 0,
                       ),
                       itemCount: uniqueImages.length,
                     ),
